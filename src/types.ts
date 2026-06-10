@@ -110,7 +110,7 @@ export const OPTICS_CONFIG: OpticsConfig = {
       category: "Armações de grau",
       price: "R$ 179,90",
       tag: "Destaque",
-      image: "/src/assets/images/gold_frame_slim_1781052240406.png"
+      image: "/images/gold_frame_slim_1781052240406.png"
     },
     {
       id: "prod-4",

@@ -159,7 +159,7 @@ export default function Hero() {
               {/* Main portrait container with luxury frame shadow */}
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900/80 border border-white/10 shadow-2xl z-10 flex items-center justify-center">
                 <img
-                  src="/src/assets/images/hero_woman_glasses_1781051980446.png"
+                  src="/images/hero_woman_glasses_1781051980446.png"
                   alt="Modelo belíssima sorrindo e usando óculos sofisticados da Ótica Visão Prime"
                   className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
