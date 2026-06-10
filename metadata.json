@@ -1,0 +1,6 @@
+{
+  "name": "Ótica Visão Prime",
+  "description": "Premium landing page for Ótica Visão Prime, showcasing high-quality optical frames, prescription lenses, and elegant sunglasses with instant WhatsApp consulting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
