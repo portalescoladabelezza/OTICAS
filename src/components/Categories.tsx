@@ -42,7 +42,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
         </div>
 
         {/* Elegant Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 lg:gap-3.5 font-sans">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 lg:gap-3.5 font-sans">
           {categoriesList.map((category) => {
             const isSelected = selectedCategory === category.name;
             
@@ -54,7 +54,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                 key={category.name}
                 onClick={() => onSelectCategory(category.name)}
                 className={cn(
-                  "flex flex-col items-center justify-between p-5 rounded-2xl border text-center transition-all duration-300 transform cursor-pointer focus:outline-none min-h-[140px] shadow-sm select-none",
+                  "flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl border text-center transition-all duration-300 transform cursor-pointer focus:outline-none min-h-[150px] sm:min-h-[160px] shadow-sm select-none w-full",
                   isSelected
                     ? "bg-slate-900 border-amber-600 text-white shadow-md ring-2 ring-amber-500/20 -translate-y-1"
                     : "bg-white border-slate-200/80 text-slate-900 hover:bg-slate-900/5 hover:border-slate-900/20 hover:-translate-y-0.5"
@@ -64,23 +64,23 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                 {/* Dynamically Styled Icon Container */}
                 <div
                   className={cn(
-                    "p-3 rounded-full mb-3 transition-colors",
+                    "p-2.5 sm:p-3 rounded-full mb-2.5 transition-colors shrink-0",
                     isSelected 
                       ? "bg-amber-500/20 text-amber-500" 
                       : "bg-slate-100 text-slate-700/70 group-hover:bg-slate-900/10"
                   )}
                 >
-                  <IconComponent className="w-6 h-6 shrink-0" />
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                 </div>
 
                 {/* Tag name */}
-                <span className="text-xs font-bold tracking-tight px-1 uppercase line-clamp-2">
+                <span className="text-xs font-bold tracking-tight px-1 uppercase line-clamp-2 leading-tight min-h-[2.25rem] flex items-center justify-center text-center">
                   {category.name}
                 </span>
 
                 {/* Sub-label descriptor */}
                 <span className={cn(
-                  "text-[10px] mt-1 tracking-wider block font-semibold",
+                  "text-[10px] mt-1.5 tracking-wider block font-semibold leading-none shrink-0",
                   isSelected ? "text-amber-500" : "text-slate-400"
                 )}>
                   {category.label}
