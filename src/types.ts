@@ -150,7 +150,7 @@ export const OPTICS_CONFIG: OpticsConfig = {
       category: "Manutenção",
       price: "Consulte",
       tag: "Serviço",
-      image: "https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=600&q=80"
+      image: "/images/manutencao-oculos.webp"
     }
   ],
 
