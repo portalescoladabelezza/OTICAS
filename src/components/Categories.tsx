@@ -4,7 +4,6 @@
  */
 
 import * as Icons from "lucide-react";
-import { cn } from "../utils";
 
 interface CategoriesProps {
   selectedCategory: string;
@@ -23,28 +22,281 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
   ];
 
   return (
-    <section className="relative bg-slate-50 py-16 border-b border-slate-200/60 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Titles */}
-        <div className="relative text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs uppercase tracking-widest font-extrabold text-amber-600">
+    <section className="optica-categories-section">
+      <style>{`
+        .optica-categories-section {
+          position: relative !important;
+          isolation: isolate !important;
+          background: #f8fafc !important;
+          padding: 64px 0 !important;
+          border-bottom: 1px solid rgba(203, 213, 225, 0.6) !important;
+          overflow: visible !important;
+          z-index: 1 !important;
+        }
+
+        .optica-categories-container {
+          width: 100% !important;
+          max-width: 1280px !important;
+          margin: 0 auto !important;
+          padding: 0 16px !important;
+          box-sizing: border-box !important;
+        }
+
+        .optica-categories-header {
+          text-align: center !important;
+          max-width: 760px !important;
+          margin: 0 auto 48px auto !important;
+          position: relative !important;
+          z-index: 2 !important;
+        }
+
+        .optica-categories-kicker {
+          display: block !important;
+          font-size: 12px !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.18em !important;
+          font-weight: 800 !important;
+          color: #d97706 !important;
+          margin-bottom: 8px !important;
+        }
+
+        .optica-categories-title {
+          font-size: clamp(32px, 7vw, 48px) !important;
+          line-height: 1.08 !important;
+          font-weight: 900 !important;
+          color: #0f172a !important;
+          margin: 0 !important;
+          letter-spacing: -0.04em !important;
+        }
+
+        .optica-categories-line {
+          width: 72px !important;
+          height: 5px !important;
+          background: #d97706 !important;
+          border-radius: 999px !important;
+          margin: 24px auto 0 auto !important;
+        }
+
+        .optica-categories-description {
+          color: #64748b !important;
+          font-size: 16px !important;
+          line-height: 1.7 !important;
+          margin: 24px auto 0 auto !important;
+          max-width: 680px !important;
+        }
+
+        .optica-categories-grid {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 16px !important;
+          width: 100% !important;
+          position: relative !important;
+          z-index: 2 !important;
+          align-items: stretch !important;
+          justify-items: stretch !important;
+          grid-auto-flow: row !important;
+          transform: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: visible !important;
+        }
+
+        .optica-category-card {
+          all: unset;
+          box-sizing: border-box !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 100% !important;
+          min-width: 0 !important;
+          min-height: 170px !important;
+          height: 100% !important;
+          padding: 22px 12px !important;
+          border-radius: 24px !important;
+          border: 1px solid rgba(203, 213, 225, 0.9) !important;
+          background: #ffffff !important;
+          color: #0f172a !important;
+          text-align: center !important;
+          cursor: pointer !important;
+          position: relative !important;
+          inset: auto !important;
+          top: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          left: auto !important;
+          z-index: 1 !important;
+          transform: none !important;
+          translate: none !important;
+          scale: 1 !important;
+          rotate: none !important;
+          margin: 0 !important;
+          overflow: hidden !important;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+        }
+
+        .optica-category-card::before,
+        .optica-category-card::after,
+        .optica-category-icon::before,
+        .optica-category-icon::after {
+          content: none !important;
+          display: none !important;
+        }
+
+        .optica-category-card:hover {
+          background: #f1f5f9 !important;
+          border-color: rgba(148, 163, 184, 0.8) !important;
+        }
+
+        .optica-category-card.is-active {
+          background: #0f172a !important;
+          border-color: #d97706 !important;
+          color: #ffffff !important;
+          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18), 0 0 0 2px rgba(217, 119, 6, 0.25) !important;
+        }
+
+        .optica-category-icon {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 58px !important;
+          height: 58px !important;
+          border-radius: 999px !important;
+          background: #f1f5f9 !important;
+          color: #64748b !important;
+          margin: 0 0 22px 0 !important;
+          padding: 0 !important;
+          position: relative !important;
+          z-index: 2 !important;
+          flex: 0 0 auto !important;
+          transform: none !important;
+        }
+
+        .optica-category-card.is-active .optica-category-icon {
+          background: rgba(217, 119, 6, 0.18) !important;
+          color: #f59e0b !important;
+        }
+
+        .optica-category-icon svg {
+          display: block !important;
+          width: 26px !important;
+          height: 26px !important;
+          min-width: 26px !important;
+          min-height: 26px !important;
+          max-width: 26px !important;
+          max-height: 26px !important;
+          position: relative !important;
+          transform: none !important;
+          overflow: visible !important;
+        }
+
+        .optica-category-name {
+          display: block !important;
+          width: 100% !important;
+          font-size: 13px !important;
+          line-height: 1.2 !important;
+          font-weight: 900 !important;
+          text-transform: uppercase !important;
+          letter-spacing: -0.02em !important;
+          color: inherit !important;
+          margin: 0 !important;
+          padding: 0 4px !important;
+          position: relative !important;
+          z-index: 2 !important;
+          transform: none !important;
+        }
+
+        .optica-category-label {
+          display: block !important;
+          width: 100% !important;
+          font-size: 12px !important;
+          line-height: 1.2 !important;
+          font-weight: 700 !important;
+          color: #94a3b8 !important;
+          margin: 14px 0 0 0 !important;
+          padding: 0 !important;
+          position: relative !important;
+          z-index: 2 !important;
+          transform: none !important;
+        }
+
+        .optica-category-card.is-active .optica-category-label {
+          color: #f59e0b !important;
+        }
+
+        @media (min-width: 640px) {
+          .optica-categories-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+          }
+
+          .optica-categories-container {
+            padding: 0 24px !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .optica-categories-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .optica-categories-grid {
+            grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+          }
+
+          .optica-category-card {
+            min-height: 160px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .optica-categories-section {
+            padding: 56px 0 !important;
+          }
+
+          .optica-categories-container {
+            padding: 0 24px !important;
+          }
+
+          .optica-categories-grid {
+            gap: 16px !important;
+          }
+
+          .optica-category-card {
+            min-height: 180px !important;
+            border-radius: 22px !important;
+          }
+
+          .optica-category-name {
+            font-size: 12px !important;
+          }
+
+          .optica-category-label {
+            font-size: 11px !important;
+          }
+        }
+      `}</style>
+
+      <div className="optica-categories-container">
+        <div className="optica-categories-header">
+          <span className="optica-categories-kicker">
             Categorias em Destaque
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-sans font-extrabold text-slate-900 mt-2 tracking-tight">
+          <h2 className="optica-categories-title">
             Escolha o que você procura
           </h2>
 
-          <div className="w-16 h-1 bg-amber-600 mx-auto mt-4 rounded-full" />
+          <div className="optica-categories-line" />
 
-          <p className="text-sm sm:text-base text-slate-500 mt-4 leading-relaxed">
+          <p className="optica-categories-description">
             Selecione uma categoria abaixo para filtrar nossos modelos e serviços exclusivos.
           </p>
         </div>
 
-        {/* Elegant Cards Grid */}
-        <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 lg:gap-3.5 font-sans auto-rows-fr">
+        <div className="optica-categories-grid">
           {categoriesList.map((category) => {
             const isSelected = selectedCategory === category.name;
             const IconComponent = (Icons as any)[category.iconName] || Icons.HelpCircle;
@@ -54,47 +306,24 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                 key={category.name}
                 type="button"
                 onClick={() => onSelectCategory(category.name)}
-                className={cn(
-                  "group relative flex flex-col items-center justify-center w-full min-h-[150px] sm:min-h-[160px] p-3.5 sm:p-5 rounded-2xl border text-center cursor-pointer focus:outline-none shadow-sm select-none overflow-hidden",
-                  "transition-colors duration-300",
-                  "!m-0 !inset-auto !transform-none !translate-x-0 !translate-y-0 !scale-100 !rotate-0",
-                  isSelected
-                    ? "bg-slate-900 border-amber-600 text-white shadow-md ring-2 ring-amber-500/20"
-                    : "bg-white border-slate-200/80 text-slate-900 hover:bg-slate-100 hover:border-slate-300"
-                )}
+                className={`optica-category-card ${isSelected ? "is-active" : ""}`}
                 id={`category-card-${category.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                {/* Dynamically Styled Icon Container */}
-                <div
-                  className={cn(
-                    "relative p-2.5 sm:p-3 rounded-full mb-2.5 transition-colors shrink-0",
-                    isSelected 
-                      ? "bg-amber-500/20 text-amber-500" 
-                      : "bg-slate-100 text-slate-700/70 group-hover:bg-slate-200"
-                  )}
-                >
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                </div>
+                <span className="optica-category-icon" aria-hidden="true">
+                  <IconComponent size={26} strokeWidth={2.3} />
+                </span>
 
-                {/* Tag name */}
-                <span className="relative text-xs font-bold tracking-tight px-1 uppercase leading-tight min-h-[2.25rem] flex items-center justify-center text-center">
+                <span className="optica-category-name">
                   {category.name}
                 </span>
 
-                {/* Sub-label descriptor */}
-                <span
-                  className={cn(
-                    "relative text-[10px] mt-1.5 tracking-wider block font-semibold leading-none shrink-0",
-                    isSelected ? "text-amber-500" : "text-slate-400"
-                  )}
-                >
+                <span className="optica-category-label">
                   {category.label}
                 </span>
               </button>
             );
           })}
         </div>
-
       </div>
     </section>
   );
