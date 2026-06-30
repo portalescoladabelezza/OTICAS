@@ -51,7 +51,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center lg:justify-start space-x-2"
+              className="mt-8 sm:mt-10 lg:mt-0 inline-flex items-center justify-center lg:justify-start space-x-2"
             >
               <span className="inline-flex items-center space-x-1.5 bg-amber-600/15 border border-amber-600/35 text-amber-500 font-semibold text-xs py-1.5 px-3.5 rounded-full tracking-wider uppercase">
                 <Sparkles className="w-3.5 h-3.5" />
