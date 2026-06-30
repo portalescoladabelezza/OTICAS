@@ -54,10 +54,10 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                 key={category.name}
                 onClick={() => onSelectCategory(category.name)}
                 className={cn(
-                  "flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl border text-center transition-all duration-300 transform cursor-pointer focus:outline-none min-h-[150px] sm:min-h-[160px] shadow-sm select-none w-full",
+                  "flex flex-col items-center justify-center p-3.5 sm:p-5 rounded-2xl border text-center transition-all duration-300 cursor-pointer focus:outline-none min-h-[150px] sm:min-h-[160px] shadow-sm select-none w-full",
                   isSelected
-                    ? "bg-slate-900 border-amber-600 text-white shadow-md ring-2 ring-amber-500/20 -translate-y-1"
-                    : "bg-white border-slate-200/80 text-slate-900 hover:bg-slate-900/5 hover:border-slate-900/20 hover:-translate-y-0.5"
+                    ? "bg-slate-900 border-amber-600 text-white shadow-md ring-2 ring-amber-500/20"
+                    : "bg-white border-slate-200/80 text-slate-900 hover:bg-slate-900/5 hover:border-slate-900/20"
                 )}
                 id={`category-card-${category.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
